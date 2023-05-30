@@ -1,0 +1,49 @@
+﻿<Page x:Class="Cvety.Pages.PageMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cvety.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMain">
+
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Orientation="Horizontal">
+			<Label Content="Поиск" Margin="10 0 0 0"/>
+			<TextBox x:Name="tbxSearch" TextChanged="TbxSearch_TextChanged" Width="200"/>
+		</StackPanel>
+		
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button x:Name="btnZakaz" Click="BtnZakaz_Click" Content="Заказ"/>
+		</StackPanel>
+
+		<DataGrid x:Name="dg" AutoGenerateColumns="False" Grid.Row="1" Margin="0 10 0 10">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Артикул" Binding="{Binding ProductArticleNumber}"/>
+				<DataGridTextColumn Header="Наименование" Binding="{Binding ProductName}"/>
+				<DataGridTextColumn Header="Категория" Binding="{Binding ProductCategoryName}"/>
+				<DataGridTextColumn Header="Производитель" Binding="{Binding ProductManufacturerName}"/>
+				<DataGridTextColumn Header="Поставщик" Binding="{Binding ProductPostavshikName}"/>
+				<DataGridTextColumn Header="Цена" Binding="{Binding ProductCost}"/>
+				<DataGridTextColumn Header="Скидка" Binding="{Binding ProductDiscountAmount}"/>
+				<DataGridTextColumn Header="Количество на складе" Binding="{Binding ProductQuantityInStock}"/>
+			</DataGrid.Columns>
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Добавить к заказу" Click="DobavitKZakazu_Click"/>
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+		</DataGrid>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="2">
+			<Button Click="DobavitKZakazu_Click" Content="Добавить в заказ"/>
+		</StackPanel>
+    </Grid>
+</Page>
